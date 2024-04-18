@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Q Graded Exercise 2</title>
+</head>
+
+<body>
+    <p>Please input values between 2 and 10:</p></br>
+    <input type="text" id="startInput" name="startInput">
+    <span>by</span>
+    <input type="text" id="endInput" name="endInput">
+    </br></br>
+    <button onclick="generateMultiplicationTable();">Generate Table</button>
+    </br></br>
+
+    <div id="tableOutput"></div>
+
+    <style>
+        button:hover {
+            background-color: #ff89c8; 
+        }
+        table {
+            border-collapse: collapse;
+            border: 2px solid #ff69b4; 
+        }
+        th, td {
+            border: 1px solid #ff69b4; 
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+
+        function validateInputs(start, end)
+        {
+            start = document.getElementById("startInput").value;
+            end = document.getElementById("endInput").value;
+        
+            if (start > 10 || end > 10 || start < 2 || end < 2) {
+                alert("Please enter values between 2 and 10 only!");
+                return false;
+            }
+            return true;
+        }
+        function generateMultiplicationTable()
+        {
+            var startValue = document.getElementById("startInput").value;
+            var endValue = document.getElementById("endInput").value;
+            if (!validateInputs(startValue, endValue)) {
+                return;
+            }
+            document.getElementById("tableOutput").innerHTML = "";
+            var tableHTML = "<table>";
+            for (var row = 1; row <= startValue; row++) { 
+                tableHTML += "<tr>";
+                for (var column = 1; column <= endValue; column++) { 
+                    tableHTML += "<td>" + (row * column) + "</td>";
+                }
+                tableHTML += "</tr>";       
+            }
+            tableHTML += "</table>";
+            document.getElementById("tableOutput").innerHTML = tableHTML;
+                
+        }        
+    </script>
+
+</body>
+</html>
+
